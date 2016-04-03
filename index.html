@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title></title>
+<title>SparkSVG Test</title>
 <meta name="viewport" content="width=device-width">
 
 <style>
-
   * {
     box-sizing: border-box;
   }
-  
   body {
-    font: 17px/1.5 'Avenir', sans-serif;
+    font: 17px/1.5 sans-serif;
     color: #222;
-    margin: 5em;
+    margin: 10%;
   }
-  
+  object, embed {
+    height: 1em;
+    width: 100%;
+    max-width: 6em;
+  }
+  .circle object,
+  .circle embed {
+    max-width: 5em;
+  }
+  .box {
+    margin: 0 0 1em;
+  }
 </style>
 
-<h1>Spark SVG</h1>
-<p>Redirecting you to github...</p>
+<div class="box circle">
 
-<script>
-  window.location = "https://github.com/phuu/sparksvg";
-</script>
+
+  <h3>Objectives</h3>
+
+  <embed src="circle.svg?0,10,30,40&rgba:100,205,205,1" type="image/svg+xml">
+
+
+  <embed src="bar.svg?0,40,50,20&rgba:100,205,205,1" type="image/svg+xml">
+</div>
