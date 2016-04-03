@@ -26,14 +26,14 @@
         return color;
     }
     function getTitle(position){
-    var title = "not met"
+    var title = "Not met"
         switch(position)
         {
           case 2:
-            title = "met";
+            title = "Met";
             break;
           case 3:
-            title = "exceeded";
+            title = "Exceeded";
             break;
         }
         return title;
