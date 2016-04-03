@@ -7,8 +7,24 @@
      width="100%" height="100%"
      onload='draw()'>
   <script><![CDATA[
-    if(typeof Array.prototype.map!=="function"){Array.prototype.map=function(a){for(var b=this,c=b.length,d=[],e=0,f;e<b;)d[e]=e in b?a.call(arguments[1],b[e],e++,b):f;return d}};
+    if(typeof Array.prototype.map!=="function"){Array.prototype.map=function(a){
+    for(var b=this,c=b.length,d=[],e=0,f;e<b;)d[e]=e in b?a.call(arguments[1],b[e],e++,b):f;return d}};
     function scale(max, min, num) {return (100 * (num - min) / (max - min)) || 0;}
+    function adjustColor(color,iteration){
+
+      if(iteration > 0)
+      {
+        colorValues = color.replace('rgba(','').replace(')','').split(',');
+        console.log(colorValues);
+        for(var c=0; c < colorValues.length -1; c++)
+        {
+          colorValues[c] = colorValues[c] * Math.ceil((0.25*c));
+        }
+        console.log("rgba(" + colorValues.join(',') + ',1)');
+        return "rgba(" + colorValues.join(',')+")";
+      }
+
+    }
     function draw() {
       var elem = document.getElementsByTagName("svg")[0],
           search = location.search.substr(1)
@@ -25,6 +41,7 @@
       if ( show_color ) {
         for (var i=0; i < segments.length; i++) {
           if (segments[i].indexOf('rgba:') != -1) {
+
             color = "rgba("+segments[i].replace('rgba:','')+")";
           }
         }
@@ -41,7 +58,15 @@
         rect.setAttribute("y", y + "%");
         rect.setAttribute("width", width + "%");
         rect.setAttribute("height", height + "%");
-        rect.setAttribute("fill", color);
+        rect.setAttribute("fill", adjustColor(color,i));
+        console.log(i);
+        if(i != 0)
+        {
+          rect.setAttribute("stroke","rgba(255,255,255,0.8)");
+          rect.setAttribute("stroke-width","2");
+        }
+
+
         elem.appendChild(rect);
       }
     }

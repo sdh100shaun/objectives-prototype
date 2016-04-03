@@ -59,6 +59,11 @@
         circle.setAttribute("cy", cy + "%");
         circle.setAttribute("r", r + (usePercent ? "%" : "px"));
         circle.setAttribute("fill", color);
+        if(i != 0)
+        {
+        circle.setAttribute("stroke","rgba(0,0,0,0.3)");
+        circle.setAttribute("stroke-width","2");
+        }
         elem.appendChild(circle);
       }
     }
